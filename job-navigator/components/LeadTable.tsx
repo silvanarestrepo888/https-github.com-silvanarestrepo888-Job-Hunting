@@ -119,7 +119,7 @@ export default function LeadTable({ onSelectLead, refreshTrigger }: LeadTablePro
   const handleEnrichAll = async () => {
     const unenrichedLeads = leads.filter(lead => lead.enrichmentStatus === 'pending')
     if (unenrichedLeads.length === 0) {
-      toast.info('All leads are already enriched')
+      toast('All leads are already enriched')
       return
     }
 
