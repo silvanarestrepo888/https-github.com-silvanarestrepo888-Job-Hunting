@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Lead {
+  id               String    @id @default(cuid())
+  name             String
+  title            String?
+  company          String?
+  location         String?
+  linkedinUrl      String?
+  connectionDegree String?   // "1st", "2nd", or "3rd"
+  email            String?
+  phone            String?
+  hierarchy        String?
+  emailTemplate    String?
+  enrichmentStatus String?   // "pending", "completed", "failed"
+  enrichedAt       DateTime?
+  createdAt        DateTime  @default(now())
+  notes            Note[]
+  
+  @@index([company])
+  @@index([email])
+  @@index([enrichmentStatus])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  leadId    String
+  Lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  
+  @@index([leadId])
+}
