@@ -1,0 +1,11 @@
+{
+  "name": "job-navigator-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd job-navigator && npm install && npm run build",
+    "dev": "cd job-navigator && npm run dev",
+    "start": "cd job-navigator && npm run start",
+    "postinstall": "cd job-navigator && npm install"
+  }
+}
