@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd job-navigator && npm install && npx prisma generate && npm run build",
+  "buildCommand": "cd job-navigator && npm run build",
   "outputDirectory": "job-navigator/.next",
   "installCommand": "cd job-navigator && npm install",
   "devCommand": "cd job-navigator && npm run dev",
