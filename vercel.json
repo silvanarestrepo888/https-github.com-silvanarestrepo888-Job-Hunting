@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd job-navigator && npm install && npm run build",
+  "outputDirectory": "job-navigator/.next",
+  "installCommand": "cd job-navigator && npm install",
+  "framework": "nextjs",
+  "rootDirectory": "job-navigator"
+}
