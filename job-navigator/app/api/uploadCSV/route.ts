@@ -4,6 +4,8 @@ import { prisma } from '@/lib/db'
 import { callCiro } from '@/lib/ciro'
 import { callClaude, generateHierarchyAndEmail } from '@/lib/claude'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData()

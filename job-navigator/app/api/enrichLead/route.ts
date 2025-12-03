@@ -3,6 +3,8 @@ import { prisma } from '@/lib/db'
 import { callCiro } from '@/lib/ciro'
 import { generateHierarchyAndEmail } from '@/lib/claude'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const { leadId } = await request.json()
