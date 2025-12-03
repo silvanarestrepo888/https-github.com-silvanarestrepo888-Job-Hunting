@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
 import { generateEmail } from '@/lib/claude'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function POST(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { leadId, regenerate = false, context = '' } = await request.json()
     
     if (!leadId) {
@@ -67,6 +68,7 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { leadId, subject, content } = await request.json()
     
     if (!leadId) {
@@ -96,6 +98,7 @@ export async function PUT(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { leadId } = await request.json()
     
     if (!leadId) {

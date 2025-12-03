@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function GET(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { searchParams } = new URL(request.url)
     const leadId = searchParams.get('leadId')
     
@@ -29,6 +30,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { leadId, content } = await request.json()
     
     if (!leadId || !content) {
@@ -54,6 +56,7 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { noteId, content } = await request.json()
     
     if (!noteId || !content) {
@@ -77,6 +80,7 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { searchParams } = new URL(request.url)
     const noteId = searchParams.get('noteId')
     

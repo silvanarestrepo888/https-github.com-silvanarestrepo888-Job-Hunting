@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd job-navigator && npm run build",
+  "buildCommand": "cd job-navigator && npx next build --webpack",
   "outputDirectory": "job-navigator/.next",
   "installCommand": "cd job-navigator && npm install",
   "devCommand": "cd job-navigator && npm run dev",

@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server'
 import { parse } from 'papaparse'
-import { prisma } from '@/lib/db'
 import { callCiro } from '@/lib/ciro'
 import { callClaude, generateHierarchyAndEmail } from '@/lib/claude'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function POST(request: Request) {
   try {
+    const { prisma } = await import('@/lib/db')
     const formData = await request.formData()
     const file = formData.get('file') as File
     

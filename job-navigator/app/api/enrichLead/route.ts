@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
 import { callCiro } from '@/lib/ciro'
 import { generateHierarchyAndEmail } from '@/lib/claude'
 
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function POST(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { leadId } = await request.json()
     
     if (!leadId) {
@@ -76,6 +77,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
+    const { prisma } = await import('@/lib/db')
     const { searchParams } = new URL(request.url)
     const leadId = searchParams.get('leadId')
     
